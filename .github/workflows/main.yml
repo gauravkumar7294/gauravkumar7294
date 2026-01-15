@@ -1,0 +1,24 @@
+name: GitHub Metrics
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 0 * * *"
+
+jobs:
+  metrics:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: lowlighter/metrics@v3.34
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          user: gauravkumar7294
+          output_action: commit
+
+          plugin_activity: yes
+          plugin_activity_days: 30
+          plugin_activity_limit: 10
+
+          plugin_pull_requests: yes
+          plugin_issues: yes
+          plugin_contributors: yes
